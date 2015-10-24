@@ -31,7 +31,7 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
-        public string Titulo
+        public string Resumo
         {
             get;
             set;
@@ -48,57 +48,35 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
-        public bool Multiplayer
+        public int Multiplayer
         {
             get;
             set;
         }
 
-        public bool Coop
+        public int Coop
         {
             get;
             set;
         }
-        public int Ano
+        public DateTime Data
         {
             get;
             set;
         }
-        public int Mes
-        {
-            get;
-            set;
-        }
-
-        public int Dia
+      
+        public List<string> Genero
         {
             get;
             set;
         }
 
-        public string[] Genero
+        public List<string> Idioma
         {
             get;
             set;
         }
 
-        public string[] LinguaInterface
-        {
-            get;
-            set;
-        }
-
-        public string[] LinguaAudio
-        {
-            get;
-            set;
-        }
-
-        public string[] LinguaLegendas
-        {
-            get;
-            set;
-        }
 
        
 

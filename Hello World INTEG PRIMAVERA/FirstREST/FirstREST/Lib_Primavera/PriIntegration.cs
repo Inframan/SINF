@@ -246,7 +246,7 @@ namespace FirstREST.Lib_Primavera
         {
             
             GcpBEArtigo objArtigo = new GcpBEArtigo();
-            IGcpBSArtigos camposArtigo = new IGcpBSArtigos();
+            IGcpBSArtigos camposArtigo;
             Model.Artigo myArt = new Model.Artigo();
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
@@ -268,7 +268,55 @@ namespace FirstREST.Lib_Primavera
                     
                     myArt.CodArtigo = objArtigo.get_Artigo();
                     myArt.DescArtigo = objArtigo.get_Descricao();
+                    myArt.Plataforma = objArtigo.get_Familia();
+
                     //myArt.Developer = camposArtigo.DaValorAtributo(codArtigo, "Developer");
+
+
+                    //////////////////////////FETCHING LANGUAGES
+                    StdBELista objList;
+                    objList = PriEngine.Engine.Consulta("SELECT Artigo.Artigo, ArtigoIdioma.Idioma FROM  Artigo, ArtigoIdioma WHERE Artigo.Artigo=ArtigoIdioma.Artigo");
+
+
+                     List<string> stringIdiomas = new List<string>();
+
+                     while (!objList.NoFim())
+                     {
+                         if (objList.Valor("Artigo") == codArtigo)
+                         {
+                             stringIdiomas.Add(objList.Valor("Idioma"));
+
+                         }
+                         objList.Seguinte();
+                     }
+
+
+                    ////////////////////////////////FETCHING PVP
+                     objList = PriEngine.Engine.Consulta("SELECT Artigo.Artigo,Artigo.CDU_LCH as Date,Artigo.CDU_Dev as Dev,Artigo.CDU_Pub as Pub,Artigo.CDU_Mul as Mul,Artigo.CDU_Cop as Cop, ArtigoMoeda.PVP1 FROM  Artigo, ArtigoMoeda WHERE Artigo.Artigo=ArtigoMoeda.Artigo");
+
+                     while (!objList.NoFim())
+                     {
+                         if (objList.Valor("Artigo") == codArtigo)
+                         {
+                             myArt.PVP1 = objList.Valor("PVP1");
+                             myArt.Publisher = objList.Valor("PUB");
+                             myArt.Developer = objList.Valor("DEV");
+                             myArt.Multiplayer = objList.Valor("MUL");
+                             myArt.Coop =  objList.Valor("COP");
+                             myArt.Data = objList.Valor("DATE");
+                             break;
+                         }                         
+                         objList.Seguinte();
+                     }
+
+                    /*
+
+                    for (int i = 0; i < 2; i++)
+                    */
+                        //stringIdiomas[i] = idiomaList.Conteudo.
+                    
+                    myArt.Idioma = stringIdiomas;
+                        
 
                     return myArt;
                 }
