@@ -246,6 +246,7 @@ namespace FirstREST.Lib_Primavera
         {
             
             GcpBEArtigo objArtigo = new GcpBEArtigo();
+            IGcpBSArtigos camposArtigo = new IGcpBSArtigos();
             Model.Artigo myArt = new Model.Artigo();
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
@@ -258,8 +259,16 @@ namespace FirstREST.Lib_Primavera
                 else
                 {
                     objArtigo = PriEngine.Engine.Comercial.Artigos.Edita(codArtigo);
+                    
+                    camposArtigo = PriEngine.Engine.Comercial.Artigos;
+                   
+        
+
+
+                    
                     myArt.CodArtigo = objArtigo.get_Artigo();
                     myArt.DescArtigo = objArtigo.get_Descricao();
+                    //myArt.Developer = camposArtigo.DaValorAtributo(codArtigo, "Developer");
 
                     return myArt;
                 }
