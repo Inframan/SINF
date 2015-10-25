@@ -46,6 +46,34 @@ namespace FirstREST.Lib_Primavera.Model
             get;
             set;
         }
+        public DateTime DataDeNascimento
+        {
+            get;
+            set;
+        }
+
+        public string Pais
+        {
+            get;
+            set;
+        }
+        public string Distrito
+        {
+            get;
+            set;
+        }
+        public string CodigoPostal
+        {
+            get;
+            set;
+        }
+
+        public string Telefone
+        {
+            get;
+            set;
+        }
+
 
     }
 }

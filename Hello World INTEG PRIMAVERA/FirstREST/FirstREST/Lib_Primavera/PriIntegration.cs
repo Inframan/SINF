@@ -69,6 +69,9 @@ namespace FirstREST.Lib_Primavera
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
 
+
+
+
                 if (PriEngine.Engine.Comercial.Clientes.Existe(codCliente) == true)
                 {
                     objCli = PriEngine.Engine.Comercial.Clientes.Edita(codCliente);
@@ -77,6 +80,11 @@ namespace FirstREST.Lib_Primavera
                     myCli.Moeda = objCli.get_Moeda();
                     myCli.NumContribuinte = objCli.get_NumContribuinte();
                     myCli.Morada = objCli.get_Morada();
+                    myCli.Pais = objCli.get_Pais();
+                    myCli.CodigoPostal = objCli.get_CodigoPostal();
+                    myCli.Telefone = objCli.get_Telefone();
+                    myCli.Distrito = objCli.get_Distrito();
+                    myCli.DataDeNascimento = objCli.get_DataCriacao();
                     return myCli;
                 }
                 else
