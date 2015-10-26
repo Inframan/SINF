@@ -43,6 +43,10 @@ namespace FirstREST.Controllers
 
     }
 
+
+
+
+
     public class ArtigoFiltroController : ApiController
     {
         //
@@ -63,6 +67,33 @@ namespace FirstREST.Controllers
 
 
     }
+
+
+
+    public class ArtigoDescontoController : ApiController
+    {
+        //
+        // GET: /atrigoFiltro/
+
+        public IEnumerable<Lib_Primavera.Model.ArtigoShort> Get(string id)
+        {
+            return Lib_Primavera.PriIntegration.ListaRelacionados(id);
+        }
+
+
+        // GET api/artigo/5    
+        public IEnumerable<Lib_Primavera.Model.ArtigoShort> Get()
+        {
+            return Lib_Primavera.PriIntegration.ListaDescontos();
+       }
+
+
+
+    }
+
+
+
+
 
 }
 

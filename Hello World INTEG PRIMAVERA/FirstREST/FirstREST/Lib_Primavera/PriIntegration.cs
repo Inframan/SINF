@@ -300,7 +300,7 @@ namespace FirstREST.Lib_Primavera
 
 
                     ////////////////////////////////FETCHING PVP
-                     objList = PriEngine.Engine.Consulta("SELECT Artigo.Artigo,Artigo.CDU_LCH as Date,Artigo.CDU_Dev as Dev,Artigo.CDU_Pub as Pub,Artigo.CDU_Mul as Mul,Artigo.CDU_Cop as Cop, ArtigoMoeda.PVP1 FROM  Artigo, ArtigoMoeda WHERE Artigo.Artigo=ArtigoMoeda.Artigo");
+                     objList = PriEngine.Engine.Consulta("SELECT Artigo.Artigo,Artigo.Desconto, Artigo.CDU_LCH as Date,Artigo.CDU_Dev as Dev,Artigo.CDU_Pub as Pub,Artigo.CDU_Mul as Mul,Artigo.CDU_Cop as Cop, ArtigoMoeda.PVP1 FROM  Artigo, ArtigoMoeda WHERE Artigo.Artigo=ArtigoMoeda.Artigo");
 
                      while (!objList.NoFim())
                      {
@@ -311,6 +311,10 @@ namespace FirstREST.Lib_Primavera
                              myArt.Developer = objList.Valor("DEV");
                              myArt.Multiplayer = objList.Valor("MUL");
                              myArt.Coop =  objList.Valor("COP");
+                             if (objList.Valor("Desconto") > 0)
+                                 myArt.Desconto = objList.Valor("Desconto");
+                             else
+                                 myArt.Desconto = 0;
                              myArt.Data = objList.Valor("DATE");
                              break;
                          }                         
@@ -414,6 +418,47 @@ namespace FirstREST.Lib_Primavera
             }
 
         }
+
+
+        public static List<Model.ArtigoShort> ListaDescontos()
+        {
+
+            StdBELista objList;
+
+            Model.ArtigoShort art = new Model.ArtigoShort();
+            List<Model.ArtigoShort> listArts = new List<Model.ArtigoShort>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
+                objList = PriEngine.Engine.Consulta("SELECT Artigo.Artigo, Artigo.Descricao,Artigo.Familia, ArtigoMoeda.PVP1,Artigo.Desconto  FROM  Artigo, ArtigoMoeda WHERE Artigo.Desconto > 0 AND Artigo.Artigo = ArtigoMoeda.Artigo");
+
+                while (!objList.NoFim())
+                {
+
+                        art = new Model.ArtigoShort();
+                        art.CodArtigo = objList.Valor("Artigo");
+                        art.DescArtigo = objList.Valor("Descricao");
+                        art.Plataforma = objList.Valor("Familia");
+                        art.PVP1 = objList.Valor("PVP1");
+                        art.Desconto = objList.Valor("DESCONTO");
+                        listArts.Add(art);
+                    
+                    objList.Seguinte();
+                }
+
+                return listArts;
+
+            }
+            else
+            {
+                return null;
+
+            }
+
+        }
+
 
         #endregion Artigo
 
