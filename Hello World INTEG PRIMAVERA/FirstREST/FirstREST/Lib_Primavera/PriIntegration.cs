@@ -298,6 +298,18 @@ namespace FirstREST.Lib_Primavera
                          objList.Seguinte();
                      }
 
+                     objList = PriEngine.Engine.Consulta("SELECT * FROM TDU_ArtigoGenero);
+
+
+                     List<string> stringGeneros = new List<string>();
+
+                     while (!objList.NoFim())
+                     {
+                         if(codArtigo ==objList.Valor("CDU_Artigo") )
+                         stringGeneros.Add(objList.Valor("CDU_Genero"));
+                         objList.Seguinte();
+                     }
+                     myArt.Genero = stringGeneros;
 
                     ////////////////////////////////FETCHING PVP
                      objList = PriEngine.Engine.Consulta("SELECT Artigo.Artigo,Artigo.Desconto, Artigo.CDU_LCH as Date,Artigo.CDU_Dev as Dev,Artigo.CDU_Pub as Pub,Artigo.CDU_Mul as Mul,Artigo.CDU_Cop as Cop, ArtigoMoeda.PVP1 FROM  Artigo, ArtigoMoeda WHERE Artigo.Artigo=ArtigoMoeda.Artigo");
