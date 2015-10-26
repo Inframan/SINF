@@ -337,13 +337,13 @@ namespace FirstREST.Lib_Primavera
 
         }
 
-        public static List<Model.Artigo> ListaArtigos()
+        public static List<Model.ArtigoShort> ListaArtigos()
         {
                         
             StdBELista objList;
 
-            Model.Artigo art = new Model.Artigo();
-            List<Model.Artigo> listArts = new List<Model.Artigo>();
+            Model.ArtigoShort art = new Model.ArtigoShort();
+            List<Model.ArtigoShort> listArts = new List<Model.ArtigoShort>();
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
@@ -353,12 +353,54 @@ namespace FirstREST.Lib_Primavera
 
                 while (!objList.NoFim())
                 {
-                    art = new Model.Artigo();
+                    art = new Model.ArtigoShort();
                     art.CodArtigo = objList.Valor("Artigo");
                     art.DescArtigo = objList.Valor("Descricao");
                     art.Plataforma = objList.Valor("Familia");
                     art.PVP1 = objList.Valor("PVP1");
                     listArts.Add(art);
+                    objList.Seguinte();
+                }
+
+                return listArts;
+
+            }
+            else
+            {
+                return null;
+
+            }
+
+        }
+
+
+
+        public static List<Model.ArtigoShort> ListaRelacionados(string Familia)
+        {
+
+            StdBELista objList;
+
+            Model.ArtigoShort art = new Model.ArtigoShort();
+            List<Model.ArtigoShort> listArts = new List<Model.ArtigoShort>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
+                objList = PriEngine.Engine.Consulta("SELECT Artigo.Artigo, Artigo.Descricao,Artigo.Familia, ArtigoMoeda.PVP1 FROM  Artigo, ArtigoMoeda WHERE Artigo.Artigo=ArtigoMoeda.Artigo");
+
+                while (!objList.NoFim())
+                {
+
+                    if (Familia == objList.Valor("Familia"))
+                    {
+                        art = new Model.ArtigoShort();
+                        art.CodArtigo = objList.Valor("Artigo");
+                        art.DescArtigo = objList.Valor("Descricao");
+                        art.Plataforma = objList.Valor("Familia");
+                        art.PVP1 = objList.Valor("PVP1");
+                        listArts.Add(art);
+                    }
                     objList.Seguinte();
                 }
 

@@ -16,7 +16,7 @@ namespace FirstREST.Controllers
         //
         // GET: /Artigos/
 
-        public IEnumerable<Lib_Primavera.Model.Artigo> Get()
+        public IEnumerable<Lib_Primavera.Model.ArtigoShort> Get()
         {
             return Lib_Primavera.PriIntegration.ListaArtigos();
         }
@@ -25,6 +25,8 @@ namespace FirstREST.Controllers
         // GET api/artigo/5    
         public Artigo Get(string id)
         {
+            
+
             Lib_Primavera.Model.Artigo artigo = Lib_Primavera.PriIntegration.GetArtigo(id);
             if (artigo == null)
             {
@@ -37,6 +39,30 @@ namespace FirstREST.Controllers
             }
         }
 
+
+
     }
+
+    public class ArtigoFiltroController : ApiController
+    {
+        //
+        // GET: /atrigoFiltro/
+
+        public IEnumerable<Lib_Primavera.Model.ArtigoShort> Get(string id)
+        {
+            return Lib_Primavera.PriIntegration.ListaRelacionados(id);
+        }
+
+
+        // GET api/artigo/5    
+        public Artigo Get()
+        {
+            return new Artigo();
+       }
+
+
+
+    }
+
 }
 
