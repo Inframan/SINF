@@ -298,7 +298,10 @@ namespace FirstREST.Lib_Primavera
                          objList.Seguinte();
                      }
 
-                     objList = PriEngine.Engine.Consulta("SELECT * FROM TDU_ArtigoGenero);
+
+
+                    /////////////////FETCHING GENRES
+                     objList = PriEngine.Engine.Consulta("SELECT * FROM TDU_ArtigoGenero");
 
 
                      List<string> stringGeneros = new List<string>();
@@ -306,7 +309,7 @@ namespace FirstREST.Lib_Primavera
                      while (!objList.NoFim())
                      {
                          if(codArtigo ==objList.Valor("CDU_Artigo") )
-                         stringGeneros.Add(objList.Valor("CDU_Genero"));
+                             stringGeneros.Add(objList.Valor("CDU_Genero"));
                          objList.Seguinte();
                      }
                      myArt.Genero = stringGeneros;
@@ -356,7 +359,7 @@ namespace FirstREST.Lib_Primavera
         public static List<Model.ArtigoShort> ListaArtigos()
         {
                         
-            StdBELista objList;
+            StdBELista objList, generoList;
 
             Model.ArtigoShort art = new Model.ArtigoShort();
             List<Model.ArtigoShort> listArts = new List<Model.ArtigoShort>();
@@ -374,6 +377,19 @@ namespace FirstREST.Lib_Primavera
                     art.DescArtigo = objList.Valor("Descricao");
                     art.Plataforma = objList.Valor("Familia");
                     art.PVP1 = objList.Valor("PVP1");
+                    List<string> stringGeneros = new List<string>();
+
+
+                    //////////////SERA QUE DEVEREMOS POR GENERO NO ARTIGO SHORT?
+                /*generoList = PriEngine.Engine.Consulta("SELECT * FROM TDU_ArtigoGenero");
+                     while (!generoList.NoFim())
+                     {
+                         if (art.CodArtigo == objList.Valor("CDU_Artigo"))
+                             stringGeneros.Add(objList.Valor("CDU_Genero"));
+                         generoList.Seguinte();
+                     }
+                     art.Genero = stringGeneros;
+                  */  
                     listArts.Add(art);
                     objList.Seguinte();
                 }
@@ -415,6 +431,48 @@ namespace FirstREST.Lib_Primavera
                         art.DescArtigo = objList.Valor("Descricao");
                         art.Plataforma = objList.Valor("Familia");
                         art.PVP1 = objList.Valor("PVP1");
+                        listArts.Add(art);
+                    }
+                    objList.Seguinte();
+                }
+
+                return listArts;
+
+            }
+            else
+            {
+                return null;
+
+            }
+
+        }
+
+
+        public static List<Model.ArtigoShort> ListaGenero(string genero)
+        {
+
+            StdBELista objList;
+
+            Model.ArtigoShort art = new Model.ArtigoShort();
+            List<Model.ArtigoShort> listArts = new List<Model.ArtigoShort>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
+                objList = PriEngine.Engine.Consulta("SELECT Artigo.Artigo,Artigo.Familia,Artigo.Desconto, Artigo.Descricao,TDU_ArtigoGenero.CDU_Genero as GEN, ArtigoMoeda.PVP1 FROM  Artigo, ArtigoMoeda,TDU_ArtigoGenero WHERE  Artigo.Artigo=ArtigoMoeda.Artigo AND  Artigo.Artigo=TDU_ArtigoGenero.CDU_Artigo");
+
+                while (!objList.NoFim())
+                {
+
+                    if (genero == objList.Valor("GEN"))
+                    {
+                        art = new Model.ArtigoShort();
+                        art.CodArtigo = objList.Valor("Artigo");
+                        art.DescArtigo = objList.Valor("Descricao");
+                        art.Plataforma = objList.Valor("Familia");
+                        art.PVP1 = objList.Valor("PVP1");
+                        art.Desconto = objList.Valor("Desconto");
                         listArts.Add(art);
                     }
                     objList.Seguinte();

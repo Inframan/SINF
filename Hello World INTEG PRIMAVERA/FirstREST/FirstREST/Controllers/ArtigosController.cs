@@ -68,6 +68,28 @@ namespace FirstREST.Controllers
 
     }
 
+    public class ArtigoGeneroController : ApiController
+    {
+        //
+        // GET: /atrigoFiltro/
+
+        public IEnumerable<Lib_Primavera.Model.ArtigoShort> Get(string id)
+        {
+            return Lib_Primavera.PriIntegration.ListaGenero(id);
+        }
+
+
+        // GET api/artigo/5    
+        public Artigo Get()
+        {
+            return new Artigo();
+        }
+
+
+
+    }
+
+
 
 
     public class ArtigoDescontoController : ApiController
