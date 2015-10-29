@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace FirstREST.Controllers
 {
     public class ValuesController : ApiController
-    {
+    {/*
         // GET api/values
         public IEnumerable<string> Get()
         {
@@ -37,6 +37,6 @@ namespace FirstREST.Controllers
         {
         }
 
-
+        */
     }
 }

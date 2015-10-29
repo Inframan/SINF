@@ -58,8 +58,8 @@ namespace FirstREST.Controllers
 
         }
 
-
-        public HttpResponseMessage Put(string id, Lib_Primavera.Model.Cliente cliente)
+        /*
+       public HttpResponseMessage Put(string id, Lib_Primavera.Model.Cliente cliente)
         {
 
             Lib_Primavera.Model.RespostaErro erro = new Lib_Primavera.Model.RespostaErro();
@@ -85,7 +85,7 @@ namespace FirstREST.Controllers
 
 
 
-        public HttpResponseMessage Delete(string id)
+       public HttpResponseMessage Delete(string id)
         {
 
 
@@ -115,6 +115,6 @@ namespace FirstREST.Controllers
 
         }
 
-
+        */
     }
 }

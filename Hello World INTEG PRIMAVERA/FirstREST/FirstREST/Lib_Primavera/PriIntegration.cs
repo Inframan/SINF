@@ -359,7 +359,7 @@ namespace FirstREST.Lib_Primavera
         public static List<Model.ArtigoShort> ListaArtigos()
         {
                         
-            StdBELista objList, generoList;
+            StdBELista objList;
 
             Model.ArtigoShort art = new Model.ArtigoShort();
             List<Model.ArtigoShort> listArts = new List<Model.ArtigoShort>();
@@ -380,16 +380,6 @@ namespace FirstREST.Lib_Primavera
                     List<string> stringGeneros = new List<string>();
 
 
-                    //////////////SERA QUE DEVEREMOS POR GENERO NO ARTIGO SHORT?
-                /*generoList = PriEngine.Engine.Consulta("SELECT * FROM TDU_ArtigoGenero");
-                     while (!generoList.NoFim())
-                     {
-                         if (art.CodArtigo == objList.Valor("CDU_Artigo"))
-                             stringGeneros.Add(objList.Valor("CDU_Genero"));
-                         generoList.Seguinte();
-                     }
-                     art.Genero = stringGeneros;
-                  */  
                     listArts.Add(art);
                     objList.Seguinte();
                 }
@@ -549,7 +539,8 @@ namespace FirstREST.Lib_Primavera
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
-                objListCab = PriEngine.Engine.Consulta("SELECT id, NumDocExterno, Entidade, DataDoc, NumDoc, TotalMerc, Serie From CabecCompras where TipoDoc='VGR'");
+                //objListCab = PriEngine.Engine.Consulta("SELECT id, NumDocExterno, Entidade, DataDoc, NumDoc, TotalMerc, Serie From CabecCompras where TipoDoc='VGR'"); //Por algum motivo os TipoDoc estão a dar erro
+                objListCab = PriEngine.Engine.Consulta("SELECT id, NumDocExterno, Entidade, DataDoc, NumDoc, TotalMerc, Serie From CabecCompras");
                 while (!objListCab.NoFim())
                 {
                     dc = new Model.DocCompra();
@@ -666,7 +657,9 @@ namespace FirstREST.Lib_Primavera
              
             PreencheRelacaoVendas rl = new PreencheRelacaoVendas();
             List<Model.LinhaDocVenda> lstlindv = new List<Model.LinhaDocVenda>();
-            
+            bool iniciaTransaccao = false;
+          
+
             try
             {
                 if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
@@ -674,23 +667,34 @@ namespace FirstREST.Lib_Primavera
                     // Atribui valores ao cabecalho do doc
                     //myEnc.set_DataDoc(dv.Data);
                     myEnc.set_Entidade(dv.Entidade);
-                    myEnc.set_Serie(dv.Serie);
+                    myEnc.set_Serie("C");
                     myEnc.set_Tipodoc("ECL");
                     myEnc.set_TipoEntidade("C");
+                    myEnc.set_CondPag("1");
+
+                    myEnc.set_Seccao("2");
+                    myEnc.set_Origem("Web");
+
                     // Linhas do documento para a lista de linhas
                     lstlindv = dv.LinhasDoc;
+                    StdBELista objList;
                     PriEngine.Engine.Comercial.Vendas.PreencheDadosRelacionados(myEnc, rl);
                     foreach (Model.LinhaDocVenda lin in lstlindv)
                     {
-                        PriEngine.Engine.Comercial.Vendas.AdicionaLinha(myEnc, lin.CodArtigo, lin.Quantidade, "", "", lin.PrecoUnitario, lin.Desconto);
+                        string st = "SELECT PVP1 From ArtigoMoeda WHERE Artigo='" + lin.CodArtigo + "'";
+                        objList = PriEngine.Engine.Consulta(st);
+                        double pvp = objList.Valor("PVP1");
+
+                        PriEngine.Engine.Comercial.Vendas.AdicionaLinha(myEnc, lin.CodArtigo, lin.Quantidade, "", "", pvp, 0);
                     }
 
 
                    // PriEngine.Engine.Comercial.Compras.TransformaDocumento(
-
+                    iniciaTransaccao = true;
                     PriEngine.Engine.IniciaTransaccao();
                     PriEngine.Engine.Comercial.Vendas.Actualiza(myEnc, "Teste");
                     PriEngine.Engine.TerminaTransaccao();
+                    iniciaTransaccao = false;
                     erro.Erro = 0;
                     erro.Descricao = "Sucesso";
                     return erro;
@@ -706,7 +710,8 @@ namespace FirstREST.Lib_Primavera
             }
             catch (Exception ex)
             {
-                PriEngine.Engine.DesfazTransaccao();
+                if (iniciaTransaccao)
+                 PriEngine.Engine.DesfazTransaccao();
                 erro.Erro = 1;
                 erro.Descricao = ex.Message;
                 return erro;
@@ -728,7 +733,8 @@ namespace FirstREST.Lib_Primavera
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
-                objListCab = PriEngine.Engine.Consulta("SELECT id, Entidade, Data, NumDoc, TotalMerc, Serie From CabecDoc where TipoDoc='ECL'");
+                //objListCab = PriEngine.Engine.Consulta("SELECT id, Entidade, Data, NumDoc, TotalMerc, Serie From CabecDoc where TipoDoc='ECL'");
+                objListCab = PriEngine.Engine.Consulta("SELECT id, Entidade, Data, NumDoc, TotalMerc, Serie From CabecDoc");
                 while (!objListCab.NoFim())
                 {
                     dv = new Model.DocVenda();
@@ -783,10 +789,10 @@ namespace FirstREST.Lib_Primavera
             {
                 
 
-                string st = "SELECT id, Entidade, Data, NumDoc, TotalMerc, Serie From CabecDoc where TipoDoc='ECL' and NumDoc='" + numdoc + "'";
+                string st = "SELECT id, Entidade, Data, NumDoc, TotalMerc, Serie From CabecDoc where  NumDoc='" + numdoc + "'";
                 objListCab = PriEngine.Engine.Consulta(st);
                 dv = new Model.DocVenda();
-                dv.id = objListCab.Valor("id");
+              dv.id = objListCab.Valor("id");   //ISto dá problemas
                 dv.Entidade = objListCab.Valor("Entidade");
                 dv.NumDoc = objListCab.Valor("NumDoc");
                 dv.Data = objListCab.Valor("Data");
