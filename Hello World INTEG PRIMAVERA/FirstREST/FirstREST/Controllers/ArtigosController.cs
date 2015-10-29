@@ -59,11 +59,11 @@ namespace FirstREST.Controllers
 
 
         // GET api/artigo/5    
-        public Artigo Get()
+    /*    public Artigo Get()
         {
             return new Artigo();
        }
-
+        */
 
 
     }
@@ -80,11 +80,11 @@ namespace FirstREST.Controllers
 
 
         // GET api/artigo/5    
-        public Artigo Get()
+  /*      public Artigo Get()
         {
             return new Artigo();
         }
-
+        */
 
 
     }
@@ -96,13 +96,13 @@ namespace FirstREST.Controllers
     {
         //
         // GET: /atrigoFiltro/
-
+/*
         public IEnumerable<Lib_Primavera.Model.ArtigoShort> Get(string id)
         {
             return Lib_Primavera.PriIntegration.ListaRelacionados(id);
         }
 
-
+        */
         // GET api/artigo/5    
         public IEnumerable<Lib_Primavera.Model.ArtigoShort> Get()
         {

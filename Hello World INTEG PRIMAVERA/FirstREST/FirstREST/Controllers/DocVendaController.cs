@@ -21,11 +21,13 @@ namespace FirstREST.Controllers
             return Lib_Primavera.PriIntegration.Encomendas_List();
         }
 
-        /*
+        
         // GET api/cliente/5    
-        public Lib_Primavera.Model.DocVenda Get(string id)
+        public IEnumerable<Lib_Primavera.Model.DocVenda> Get(string id)
         {
-            Lib_Primavera.Model.DocVenda docvenda = Lib_Primavera.PriIntegration.Encomenda_Get(id);
+            return Lib_Primavera.PriIntegration.Encomenda_Get(id);
+
+            /*Lib_Primavera.Model.DocVenda docvenda = Lib_Primavera.PriIntegration.Encomenda_Get(id);
             if (docvenda == null)
             {
                 throw new HttpResponseException(
@@ -35,9 +37,9 @@ namespace FirstREST.Controllers
             else
             {
                 return docvenda;
-            }
+            }*/
         }
-        */
+        
 
         public HttpResponseMessage Post(Lib_Primavera.Model.DocVenda dv)
         {
