@@ -15,6 +15,11 @@ namespace FirstREST.Controllers
     {
         //
         // GET: /Artigos/
+        /// <summary>
+        /// Webservice  Catálogo.
+        /// Devolve todos os Artigos
+        /// </summary>
+        /// <returns></returns>
 
         public IEnumerable<Lib_Primavera.Model.ArtigoShort> Get()
         {
@@ -22,7 +27,13 @@ namespace FirstREST.Controllers
         }
 
 
-        // GET api/artigo/5    
+        // GET api/artigo/5/
+        /// <summary>
+        /// Webservice Jogo.
+        /// Devolve todos os detalhed de um jogo
+        /// </summary>
+        /// <param name="id">Id do Artigo</param>
+        /// <returns></returns>
         public Artigo Get(string id)
         {
             
@@ -51,6 +62,13 @@ namespace FirstREST.Controllers
     {
         //
         // GET: /atrigoFiltro/
+        /// <summary>
+        /// WebService Relacionados.
+        /// Devolve todos os Artigos Relacionados
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         public IEnumerable<Lib_Primavera.Model.ArtigoShort> Get(string id)
         {
@@ -72,6 +90,12 @@ namespace FirstREST.Controllers
     {
         //
         // GET: /atrigoFiltro/
+        /// <summary>
+        /// Webservice Genero.
+        /// Devolve todos os artigos segundo um género
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         public IEnumerable<Lib_Primavera.Model.ArtigoShort> Get(string id)
         {
@@ -104,6 +128,11 @@ namespace FirstREST.Controllers
 
         */
         // GET api/artigo/5    
+        /// <summary>
+        /// Webservice Promoções.
+        /// Devolve todos os artigos com desconto
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Lib_Primavera.Model.ArtigoShort> Get()
         {
             return Lib_Primavera.PriIntegration.ListaDescontos();

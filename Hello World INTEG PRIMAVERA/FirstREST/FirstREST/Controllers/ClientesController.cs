@@ -13,6 +13,11 @@ namespace FirstREST.Controllers
     {
         //
         // GET: /Clientes/
+        /// <summary>
+        /// Webservice Clientes.
+        /// Devolve uma lista com todos os clientes
+        /// </summary>
+        /// <returns></returns>
 
         public IEnumerable<Lib_Primavera.Model.Cliente> Get()
         {
@@ -21,6 +26,12 @@ namespace FirstREST.Controllers
 
 
         // GET api/cliente/5    
+        /// <summary>
+        /// Webservice Cliente.
+        /// Devolve um Cliente
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Cliente Get(string id)
         {
             Lib_Primavera.Model.Cliente cliente = Lib_Primavera.PriIntegration.GetCliente(id);
@@ -36,6 +47,13 @@ namespace FirstREST.Controllers
             }
         }
 
+        // Post api/cliente/
+        /// <summary>
+        /// Webservice Registo.
+        /// Permite a criação de um cliente
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
 
         public HttpResponseMessage Post(Lib_Primavera.Model.Cliente cliente)
         {

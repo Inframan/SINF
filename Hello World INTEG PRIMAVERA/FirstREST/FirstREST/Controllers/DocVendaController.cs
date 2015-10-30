@@ -15,14 +15,21 @@ namespace FirstREST.Controllers
     {
         //
         // GET: /Clientes/
-        
+        /*
         public IEnumerable<Lib_Primavera.Model.DocVenda> Get()
         {
             return Lib_Primavera.PriIntegration.Encomendas_List();
         }
-
+        */
         
         // GET api/cliente/5    
+        /// <summary>
+        /// Webservice Encomenda Cliente.
+        /// Devolve o estado de todas as encomendas de um utilizador
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IEnumerable<Lib_Primavera.Model.DocVenda> Get(string id)
         {
             return Lib_Primavera.PriIntegration.Encomenda_Get(id);
@@ -39,8 +46,14 @@ namespace FirstREST.Controllers
                 return docvenda;
             }*/
         }
-        
 
+        // GET api/cliente/5    
+        /// <summary>
+        /// Webservice Cria Encomenda.
+        /// Permite a criação de uma encomenda
+        /// </summary>
+        /// <param name="dv"></param>
+        /// <returns></returns>
         public HttpResponseMessage Post(Lib_Primavera.Model.DocVenda dv)
         {
             Lib_Primavera.Model.RespostaErro erro = new Lib_Primavera.Model.RespostaErro();
