@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 /* App Module */
 
 var phonecatApp = angular.module('phonecatApp', [
@@ -22,6 +24,12 @@ phonecatApp.config(['$routeProvider',
         templateUrl: 'partials/phone-detail.html',
         controller: 'PhoneDetailCtrl'
       }).
+      when('/other',
+      {
+          templateUrl: 'app/index'
+          controller : 'myController'
+
+      })
       otherwise({
         redirectTo: '/phones'
       });

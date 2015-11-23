@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script src="js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar navbar-inverse navbar-fixed-top" role="navigation" >  
+
+        <div class="container">
+
+               <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">WebAuto</a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+     
+                </div>
+
+
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">    
+                <ul class="nav navbar-nav navbar-right">
+                  <li role="presentation">
+                    <a href="store.html">Loja</a>
+                  </li>
+                  <li role="presentation">
+                    <a href="#">Suporte</a>
+                  </li>
+                <li role="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Conta<span class="caret"></span></a>
+                         <ul class="dropdown-menu">
+                            <li><a href="#login" data-toggle="modal">Autenticação</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#register" data-toggle="modal">Registo</a></li>
+                        </ul>
+                  </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><a href="store.html">BMW</a>
+                    <small>320d</small>
+                </h1>                
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+
+            <div class="col-md-8">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img class="img-responsive" src="images/BMW-320d.jpg" alt="">
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive" src="images/BMW-320d-b.jpg" alt="">
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <h2>Descrição</h2>
+
+                <dl>
+                   <dt>Estado:</dt>
+                   <dd>Novo</dd>
+                   <dt>Vendedor:</dt>
+                   <dd>WebAuto</dd>
+                   <dt>Tipo de combustivel:</dt>
+                    <dd>Gasóleo</dd>
+                    <dt>Pontuação dos utilizadores:</dt>
+                    <dd>9</dd>
+                </dl>
+                 <br>
+
+                <h3>Especificações técnicas</h3>
+                <ul>
+                    <li>2000 cm3 de cilindrada</li>
+                    <li>177 cv</li>
+                    <li>Diesel</li>
+                    <li>Tração traseira</li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <hr>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>LBAW Grupo 16 2015</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    
+
+    <!-- Creating login modal -->
+        <div class="modal fade" id="login" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form class="form-horizontal">
+                        <div class="modal-header">
+                            <h4><strong>Autenticação<strong></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group"> <!-- Username -->
+                                <label for = "login-username" class="col-lg-2 control-label">Email:</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="login-username" placeholder="Edit">
+                                </div>
+                            </div>
+                            <div class="form-group"> <!-- Password -->
+                                <label for = "login-password" class="col-lg-2 control-label">Password:</label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" id="login-password" placeholder="Edit">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-default" data-dismiss="modal">Sair</a>
+                            <a class="btn btn-primary" data-dismiss="modal">Entrar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Creating register modal -->
+        <div class="modal fade" id="register" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form class="form-horizontal">
+                        <div class="modal-header">
+                            <h4><strong>Registo</strong></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group"> <!-- Nome -->
+                                <label for = "register-name" class="col-lg-2 control-label">Nome:</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="register-name" placeholder="Edit">
+                                </div>
+                            </div>
+                            <div class="form-group"> <!-- Email -->
+                                <label for = "register-email" class="col-lg-2 control-label">Email:</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="register-email" placeholder="Edit">
+                                </div>
+                            </div>
+                            <div class="form-group"> <!-- Morada -->
+                                <label for = "register-address" class="col-lg-2 control-label">Morada:</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="register-address" placeholder="Edit">
+                                </div>
+                            </div>
+                            <div class="form-group"> <!-- NIF -->
+                                <label for = "register-creditCard" class="col-lg-2 control-label">Cartão de crédito:</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="register-creditCard" placeholder="Edit">
+                                </div>
+                            </div>
+                            <div class="form-group"> <!-- Cartao Crdt. -->
+                                <label for = "register-nif" class="col-lg-2 control-label">NIF:</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="register-nif" placeholder="Edit">
+                                </div>
+                            </div>
+                            <div class="form-group"> <!-- Password -->
+                                <label for = "register-password" class="col-lg-2 control-label">Password:</label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" id="register-password" placeholder="Edit">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-default" data-dismiss="modal">Sair</a>
+                            <a class="btn btn-primary" data-dismiss="modal">Submeter</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+</body>
+
+</html>

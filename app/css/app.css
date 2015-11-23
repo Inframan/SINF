@@ -97,3 +97,24 @@ ul.specs dt {
 h1 {
   border-bottom: 1px solid gray;
 }
+
+
+
+.red{
+  background-color: #a62a2a !important;
+}
+
+.red-border {
+  border-color: #a62a2a;
+}
+
+.row-item{
+
+  display:table;
+  
+}
+.row-item [class*="col-"] {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
+}
