@@ -118,3 +118,27 @@ h1 {
     display: table-cell;
     vertical-align: top;
 }
+.red{
+  background-color: #a62a2a !important;
+}
+
+.red-border {
+  border-color: #a62a2a;
+}
+
+.row-item{
+
+  display:table;
+  
+}
+.row-item [class*="col-"] {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.alert{
+  text-align: center;
+  margin-bottom: 0px !important;
+
+}
