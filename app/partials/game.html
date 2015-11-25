@@ -4,8 +4,8 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"><a href="store.html">BMW</a>
-                    <small>320d</small>
+                <h1 class="page-header"><a href="store.html">{{game.DescArtigo}}</a>
+                    <small>{{game.Plataforma}}</small>
                 </h1>                
             </div>
         </div>
@@ -46,11 +46,11 @@
                 <h2>Descrição</h2>
 
                 <dl>
-                   <dt>Estado:</dt>
-                   <dd>Novo</dd>
-                   <dt>Vendedor:</dt>
-                   <dd>WebAuto</dd>
-                   <dt>Tipo de combustivel:</dt>
+                   <dt>Preço: {{game.PVP1}}€</dt>
+                   <dd>{{game.Desconto > 0 ? "Desconto de " + game.Desconto + "%"  : ""}}</dd>
+                   <dt>Co-op: {{game.Coop ? "Com modo cooperativo"  : "Sem modo cooperativo"}}</dt>
+                   <dd>Data de Lançamento: {{game.Data}} </dd>
+                   <dt>Developer: {{game.Developer}} </dt>
                     <dd>Gasóleo</dd>
                     <dt>Pontuação dos utilizadores:</dt>
                     <dd>9</dd>
@@ -70,15 +70,6 @@
 
 
         <hr>
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>LBAW Grupo 16 2015</p>
-                </div>
-            </div>
-        </footer>
-
     </div>
     
 

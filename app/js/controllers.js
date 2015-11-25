@@ -12,12 +12,24 @@ storeControllers.controller('StoreCtrl', ['$scope', '$http', function ($scope, $
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   }).success(function(response) {
     $scope.games = response;
-    console.log(response);
 });
 
 }]);
 
-storeControllers.controller('GameCtrl', ['$scope', '$http', function ($scope,$http){
+storeControllers.controller('GameCtrl', ['$scope', '$http', '$routeParams', function ($scope,$http,$routeParams){
+
+   
+	var s = $routeParams.artigoId;
+
+$http({
+    url: "http://127.0.0.1:49822/api/artigos/" +s,
+    method: "GET",
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  }).success(function(response) {
+    $scope.game = response;
+    console.log(response);
+});
+
 
 }]);
 

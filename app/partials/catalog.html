@@ -11,26 +11,33 @@
         <!-- Wrapper for slides -->
      <div class="col-md-10">
       <!--Body content-->
-     <ul class="games">
-     <p>{{games}}</p>
-        <li ng-repeat="game in games | filter:query | orderBy:orderProp">
-     }
-    
- <div class="carousel-inner">
-            <div class="item active">
-              <img src="images/Carousel/bmw.png">
-                  <div class="carousel-caption">
-                                <a href="">{{game.CodArtigo}}</a>
-          <h1>{{game.DescArtigo}}</h1>
+       <ul class="games">
+          <li ng-repeat="game in games | filter:query | orderBy:orderProp" class="col-md-4">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4> <a href="#">{{game.DescArtigo}}</a></h4>
+                    <h6>{{game.PVP1}}€ </h6>
+                    <p>{{game.Desconto > 0 ? "Desconto de " + game.Desconto + "%"  : ""}}</p>
+                    <p> Plataforma: {{game.Plataforma}}</p>
+                </div>
+                <div class="panel-body">
+                   <img class="img-thumbnail" src="images/BMW-320d.jpg">
+                    <a href="/app/#/artigo/{{game.CodArtigo}}" class="btn btn-lg btn-block btn-info">Saber Mais</a>
+                </div>
+             </div>
 
-
+            <div class="carousel-inner">
+                <div class="item active">
+                  <img src="images/Carousel/bmw.png">
+                      <div class="carousel-caption">
+                          <a href="">{{game.CodArtigo}}</a>
+                          <h1>{{game.DescArtigo}}</h1>
                       </div>
-            </div>
-
-
-      </ul>
-
-    </div>
+                </div>
+             </div>
+          </li>
+        </ul>
+      </div>
 
     <!-- Left and right controls -->
       <a class="left carousel-control" href="#myCarousel"  data-slide="prev">
@@ -43,79 +50,6 @@
       </a>
     </div>
   </div> 
-
-
-    <div class="row">
-      <br><br>
-        <!--    <div class="col-lg-12">
-                <h1 class="page-header">
-                    Destaques
-                </h1>
-            </div> -->
-
-
-       <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4> <a href="#">BMW</a></h4>
-                        <h6> 320d</h6>
-                    </div>
-                    <div class="panel-body">
-                       <img class="img-thumbnail" src="images/BMW-320d.jpg">
-                        <a href="item.html" class="btn btn-lg btn-block btn-info">Saber Mais</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4> <a href="item.html">Mercedes Benz</a></h4>
-                        <h6> CLA</h6>
-                 </div>
-                  <div class="panel-body">
-                        <img class="img-thumbnail" src="images/Mercedes-CLA.jpg">
-                        <a href="item.html" class="btn btn-lg btn-block btn-info">Saber Mais</a>
-                   </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4> <a href="#">Opel</a></h4>
-                        <h6>Insignia</h6>
-                 </div>
-                  <div class="panel-body">
-                        <img class="img-thumbnail" src="images/opel-insignia.jpg">
-                        <a href="item.html" class="btn btn-lg btn-block btn-info">Saber Mais</a>
-                   </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                     <div class="panel-heading">
-                        <h4> <a href="#">Lexus</a></h4>
-                        <h6>ES</h6>
-                 </div>
-                  <div class="panel-body">
-                        <img class="img-thumbnail" src="images/lexus-es.jpg">
-                        <a href="item.html" class="btn btn-lg btn-block btn-info">Saber Mais</a>
-                   </div>
-                </div>
-            </div>
-      </div>
-
-
-    <div class="container">
-      <hr>
-          <!-- Footer -->
-          <footer>
-              <div class="row">
-                  <div class="col-lg-12">
-                      <p>LBAW  Grupo 16 2015</p>
-                  </div>
-              </div>
-          </footer>
-      </div>
 
 </div>
 
