@@ -4,7 +4,8 @@
 
 var storeControllers = angular.module('storeControllers',['ngRoute']);
 
-storeControllers.controller('StoreCtrl',function ($scope, $http){
+storeControllers.controller('StoreCtrl', ['$scope', '$http', function ($scope, $http){
+
 	$http({
     url: "http://127.0.0.1:49822/api/artigos",
     method: "GET",
@@ -14,7 +15,9 @@ storeControllers.controller('StoreCtrl',function ($scope, $http){
     console.log(response);
 });
 
-storeControllers.controller('GameCtrl', function ($scope,$http,$routeParams){
+}]);
 
-});
+storeControllers.controller('GameCtrl', ['$scope', '$http', function ($scope,$http){
+
+}]);
 
