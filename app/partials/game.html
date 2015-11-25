@@ -51,19 +51,19 @@
                    <dt>Co-op: {{game.Coop ? "Com modo cooperativo"  : "Sem modo cooperativo"}}</dt>
                    <dd>Data de Lançamento: {{game.Data}} </dd>
                    <dt>Developer: {{game.Developer}} </dt>
-                    <dd>Gasóleo</dd>
-                    <dt>Pontuação dos utilizadores:</dt>
-                    <dd>9</dd>
+                    <dt>Generos: 
+                        <dd ng-repeat="genero in game.Genero">{{genero}}</dd>                  
+                    </dt>
+                    <dt>Idiomas: 
+                        <dd ng-repeat="idioma in game.Idioma">{{idioma}}</dd>                  
+                    </dt>
+                    </dd>
+                    <dt>Publisher:{{game.Publisher}} </dt>
                 </dl>
                  <br>
 
-                <h3>Especificações técnicas</h3>
-                <ul>
-                    <li>2000 cm3 de cilindrada</li>
-                    <li>177 cv</li>
-                    <li>Diesel</li>
-                    <li>Tração traseira</li>
-                </ul>
+                <h3>Resumo</h3>
+                <p>{{game.Resumo}}</p>
             </div>
 
         </div>
