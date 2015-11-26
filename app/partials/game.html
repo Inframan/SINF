@@ -10,48 +10,50 @@
             </div>
         </div>
         <!-- /.row -->
-
         <!-- Portfolio Item Row -->
         <div class="row">
-
-
-            <div class="col-md-6 text-left">
-
-
+            <div class="col-md-8 text-left">
                 <div class="panel-body">
                     <img class="img-thumbnail" src="images/BMW-320d.jpg">
                 </div>
-                <br></br>
-                <h3>Resumo</h3>
-                <p>{{game.Resumo}}</p>
-
-              
             </div>
-                <div class="col-md-6 text-left">
-                  <h2>Descrição</h2>
+            <div class="col-md-4 text-left">
+                <h2>Descrição</h2>
 
                 <dl>
-                   <dt>Preço: {{game.PVP1}}€</dt>
-                   <dd>{{game.Desconto > 0 ? "Desconto de " + game.Desconto + "%"  : ""}}</dd>
-                   <dt>Co-op: {{game.Coop ? "Com modo cooperativo"  : "Sem modo cooperativo"}}</dt>
-                   <dd>Data de Lançamento: {{game.Data}} </dd>
-                   <dt>Developer: {{game.Developer}} </dt>
-                    <dt>Generos: 
-                        <dd ng-repeat="genero in game.Genero">{{genero}}</dd>                  
-                    </dt>
-                    <dt>Idiomas: 
-                        <dd ng-repeat="idioma in game.Idioma">{{idioma}}</dd>                  
-                    </dt>
+                   <dt>Preço: </dt><dd>{{game.PVP1}}€</dd>
+                   <dt>{{game.Desconto > 0 ? "Desconto de " + game.Desconto + "%"  : ""}}</dt>
+                   <dt>Co-op:</dt><dd> {{game.Coop ? "Com modo cooperativo"  : "Sem modo cooperativo"}}</dd>
+                   <dt>Data de Lançamento:</dt><dd> {{game.Data}} </dd>
+                   <dt>Developer:</dt><dd> {{game.Developer}} </dd>
+                    <dt>Generos: </dt> <dd ng-repeat="genero in game.Genero">{{genero}}</dd>                  
+                
+                    <dt>Idiomas:</dt> <dd ng-repeat="idioma in game.Idioma">{{idioma}}</dd>                  
+                    
 
                     </dd>
-                    <dt>Publisher:{{game.Publisher}} </dt>
+                    <dt>Publisher:</dt><dd>{{game.Publisher}} </dd>
                 </dl>
                  <br>
-                </div>
             </div>
+            
+            <div class="col-md-8 text-left">
+                  
+                <br></br>
+                <h3>Resumo</h3>
+                <p>{{game.Resumo ? game.Resumo: "Lorem ipsum dolor sit amet, dico zril disputationi an per, eius sonet clita cum eu. Mea fugit melius no. Cum consul facilis an. Alienum voluptua sea an, pri ut brute epicuri, posse dicat paulo no est. Ne per dictas lobortis, eligendi laboramus delicatissimi ex vel.
 
+No vim nihil fabulas. Quo facilis tibique mandamus id. Fugit populo pro ei. Ea meis iuvaret vim, ei eligendi molestie eum, cu adhuc salutatus repudiandae quo.
 
-
+Quis alterum equidem vis ea, ei dicam utinam conclusionemque ius. Mucius delicata has cu, dictas offendit iudicabit vim ei. Case probo signiferumque eum et. Eam nusquam nostrum disputando an."}}</p>
+              
+            </div>
+                <div class="col-md-4">
+              <div class="panel-body">
+                    <a href="/app/#/artigo/{{game.CodArtigo}}" class="btn btn-lg btn-block btn-info">Adicionar ao Carrinho</a>
+                </div>
+                </div>
+        </div>
         <hr>
     </div>
     
