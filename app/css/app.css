@@ -1,7 +1,6 @@
 /* app css stylesheet */
 
 body {
-  padding-top: 20px;
 }
 
 
@@ -142,3 +141,7 @@ h1 {
   margin-bottom: 0px !important;
 
 }
+
+ul.games {
+ list-style-type: none;
+ }

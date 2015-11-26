@@ -1,15 +1,9 @@
 <div class="container-fluid">
 
   <div class="row" >
-    <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators" >
-        <li data-target="#myCarousel" data-slide-to="0" class="active" ></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-      </ol>
 
         <!-- Wrapper for slides -->
-     <div class="col-md-10">
+     <div class="col-md-12 text-center">
       <!--Body content-->
        <ul class="games">
           <li ng-repeat="game in games | filter:query | orderBy:orderProp" class="col-md-4">
@@ -19,36 +13,16 @@
                     <h6>{{game.PVP1}}€ </h6>
                     <p>{{game.Desconto > 0 ? "Desconto de " + game.Desconto + "%"  : ""}}</p>
                     <p> Plataforma: {{game.Plataforma}}</p>
+                    
                 </div>
                 <div class="panel-body">
                    <img class="img-thumbnail" src="images/BMW-320d.jpg">
-                    <a href="/app/#/artigo/{{game.CodArtigo}}" class="btn btn-lg btn-block btn-info">Saber Mais</a>
-                </div>
-             </div>
-
-            <div class="carousel-inner">
-                <div class="item active">
-                  <img src="images/Carousel/bmw.png">
-                      <div class="carousel-caption">
-                          <a href="">{{game.CodArtigo}}</a>
-                          <h1>{{game.DescArtigo}}</h1>
-                      </div>
+                    <a href="/app/#/artigo/{{game.CodArtigo}}" class="btn btn-lg btn-block btn-info">Ver Detalhes</a>
                 </div>
              </div>
           </li>
         </ul>
       </div>
-
-    <!-- Left and right controls -->
-      <a class="left carousel-control" href="#myCarousel"  data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel"  data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
   </div> 
 
 </div>
