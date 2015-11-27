@@ -16,7 +16,7 @@ storeControllers.controller('StoreCtrl', ['$scope', '$http', function ($scope, $
 
 }]);
 
-storeControllers.controller('GameCtrl', ['$scope', '$http', '$routeParams', function ($scope,$http,$routeParams){
+storeControllers.controller('GameCtrl', ['$scope', '$http', '$routeParams', '$cookies', function ($scope,$http,$routeParams,$cookies){
 
    
 	var s = $routeParams.artigoId;
@@ -27,9 +27,22 @@ storeControllers.controller('GameCtrl', ['$scope', '$http', '$routeParams', func
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       }).success(function(response) {
         $scope.game = response;
-        console.log(response);
     });
 
+
+    $scope.addCart =function () {
+        
+        var cartArray = $cookies.get("cart");
+        if(Array.isArray())
+            cartArray.push($routeParams.artigoId);
+        else
+        {
+            var temp = cartArray;
+            cartArray = [temp, $routeParams.artigoId];
+        }
+        $cookies.put("cart",cartArray);
+
+    }
 
 }]);
 
@@ -48,6 +61,15 @@ storeControllers.controller('OrderCtrl', ['$scope', '$http', '$routeParams', fun
       }).success(function(response) {
         $scope.orders = response;
     });
+
+
+}]);
+
+
+
+storeControllers.controller('CartCtrl', ['$scope', '$http', '$cookies', function ($scope,$http,$cookies){
+
+    var s = $routeParams.clientId;
 
 }]);
 

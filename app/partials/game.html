@@ -50,95 +50,9 @@ Quis alterum equidem vis ea, ei dicam utinam conclusionemque ius. Mucius delicat
             </div>
                 <div class="col-md-4">
               <div class="panel-body">
-                    <a href="/app/#/artigo/{{game.CodArtigo}}" class="btn btn-lg btn-block btn-info">Adicionar ao Carrinho</a>
+                    <button ng-ref="here" class="btn btn-lg btn-block btn-info" ng-click="addCart()" >Adicionar ao Carrinho</button>
                 </div>
                 </div>
         </div>
         <hr>
     </div>
-    
-
-    <!-- Creating login modal -->
-        <div class="modal fade" id="login" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form class="form-horizontal">
-                        <div class="modal-header">
-                            <h4><strong>Autenticação<strong></h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group"> <!-- Username -->
-                                <label for = "login-username" class="col-lg-2 control-label">Email:</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="login-username" placeholder="Edit">
-                                </div>
-                            </div>
-                            <div class="form-group"> <!-- Password -->
-                                <label for = "login-password" class="col-lg-2 control-label">Password:</label>
-                                <div class="col-lg-10">
-                                    <input type="password" class="form-control" id="login-password" placeholder="Edit">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <a class="btn btn-default" data-dismiss="modal">Sair</a>
-                            <a class="btn btn-primary" data-dismiss="modal">Entrar</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Creating register modal -->
-        <div class="modal fade" id="register" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form class="form-horizontal">
-                        <div class="modal-header">
-                            <h4><strong>Registo</strong></h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group"> <!-- Nome -->
-                                <label for = "register-name" class="col-lg-2 control-label">Nome:</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="register-name" placeholder="Edit">
-                                </div>
-                            </div>
-                            <div class="form-group"> <!-- Email -->
-                                <label for = "register-email" class="col-lg-2 control-label">Email:</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="register-email" placeholder="Edit">
-                                </div>
-                            </div>
-                            <div class="form-group"> <!-- Morada -->
-                                <label for = "register-address" class="col-lg-2 control-label">Morada:</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="register-address" placeholder="Edit">
-                                </div>
-                            </div>
-                            <div class="form-group"> <!-- NIF -->
-                                <label for = "register-creditCard" class="col-lg-2 control-label">Cartão de crédito:</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="register-creditCard" placeholder="Edit">
-                                </div>
-                            </div>
-                            <div class="form-group"> <!-- Cartao Crdt. -->
-                                <label for = "register-nif" class="col-lg-2 control-label">NIF:</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="register-nif" placeholder="Edit">
-                                </div>
-                            </div>
-                            <div class="form-group"> <!-- Password -->
-                                <label for = "register-password" class="col-lg-2 control-label">Password:</label>
-                                <div class="col-lg-10">
-                                    <input type="password" class="form-control" id="register-password" placeholder="Edit">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <a class="btn btn-default" data-dismiss="modal">Sair</a>
-                            <a class="btn btn-primary" data-dismiss="modal">Submeter</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
