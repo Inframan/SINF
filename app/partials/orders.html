@@ -1,0 +1,44 @@
+<div class="container-fluid">
+
+  <div class="row" >
+
+        <!-- Wrapper for slides -->
+     <div class="col-md-12 text-center">
+      <!--Body content-->
+       <ul class="games">
+          <li ng-repeat="order in orders" class="col-md-8">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2> <a href="#">{{order.Entidade}}</a></h2>
+                    <h4 ng-locale="pt-pt">{{order.Data | date :'dd-mm-yyyy hh-mm'}}</h4>
+                    <h6 ng-repeat="game in order.LinhasDoc">
+                      <dt>Jogo:</dt>
+                        <dd>{{game.DescArtigo}}</dd>
+                      <dt>Desconto: </dt>
+                        <dd>{{game.Desconto}}</dd>
+                      <dd>Preço: </dd>
+                        <dt>{{game.PrecoUnitario}}</dt>
+                      <dd>Quantidade:</dd>
+                      <dt>{{game.Quantidade}}</dt>
+                      
+                    </h6>
+                    <h6>Total: {{order.TotalMerc}}</h6>
+
+
+                </div>
+                <div class="panel-body">
+                   <img class="img-thumbnail" src="images/BMW-320d.jpg">
+                    <a href="/app/#/artigo/{{game.CodArtigo}}" class="btn btn-lg btn-block btn-info">Ver Detalhes</a>
+                </div>
+             </div>
+          </li>
+        </ul>
+      </div>
+  </div> 
+
+</div>
+
+
+
+</body>
+</html>

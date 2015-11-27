@@ -20,6 +20,10 @@ gameApp.config(['$routeProvider',
         templateUrl: 'partials/game.html',
         controller: 'GameCtrl'
       }).
+      when('/orders/:clientId', {
+        templateUrl: 'partials/orders.html',
+        controller: 'OrderCtrl'
+      }).
       otherwise({
         redirectTo: '/home'
       });

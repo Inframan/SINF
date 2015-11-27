@@ -36,13 +36,13 @@ storeControllers.controller('GameCtrl', ['$scope', '$http', '$routeParams', func
 
 
 
-storeControllers.controller('OrderCtrl', ['$scope', '$http', function ($scope, $http){
+storeControllers.controller('OrderCtrl', ['$scope', '$http', '$routeParams', function ($scope,$http,$routeParams){
 
-    var s = $routeParams.clienteID;
+    var s = $routeParams.clientId;
 
     $http({
-        //  url: "http://127.0.0.1:49822/api/DocVenda/" + s,  //versão final
-        url: "http://127.0.0.1:49822/api/DocVenda/C0001",//para teste, as encomenas do cliente C0001
+        url: "http://127.0.0.1:49822/api/DocVenda/" + s,  //versão final
+        //url: "http://127.0.0.1:49822/api/DocVenda/C0001",//para teste, as encomenas do cliente C0001
         method: "GET",
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       }).success(function(response) {
