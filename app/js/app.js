@@ -25,7 +25,7 @@ gameApp.config(['$routeProvider',
         templateUrl: 'partials/orders.html',
         controller: 'OrderCtrl'
       }).      
-      when('/cart/:artigoId', {
+      when('/cart/', {
         templateUrl: 'partials/cart.html',
         controller: 'CartCtrl'
       }).

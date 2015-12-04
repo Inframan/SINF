@@ -33,13 +33,12 @@ storeControllers.controller('GameCtrl', ['$scope', '$http', '$routeParams', '$co
     $scope.addCart =function () {
         
         var cartArray = $cookies.get("cart");
-        if(Array.isArray())
-            cartArray.push($routeParams.artigoId);
-        else
-        {
+        if(cartArray.length > 0){
             var temp = cartArray;
             cartArray = [temp, $routeParams.artigoId];
         }
+        else
+            cartArray = [$routeParams.artigoId];
         $cookies.put("cart",cartArray);
 
     }
@@ -66,10 +65,15 @@ storeControllers.controller('OrderCtrl', ['$scope', '$http', '$routeParams', fun
 }]);
 
 
-
 storeControllers.controller('CartCtrl', ['$scope', '$http', '$cookies', function ($scope,$http,$cookies){
 
-    var s = $routeParams.clientId;
+    //var s = $routeParams.clientId;
+
+
+    console.log($cookies.get("cart"));
+
+    $scope.games = $cookies.get("cart").split(",");
+
 
 }]);
 
