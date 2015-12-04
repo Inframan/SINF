@@ -29,20 +29,84 @@ storeControllers.controller('GameCtrl', ['$scope', '$http', '$routeParams', '$co
         $scope.game = response;
     });
 
+       $scope.addCart =function () {
 
+            var cartArray = $cookies.getObject("games");
+
+            var artigoId = $routeParams.artigoId;
+            var nome = $scope.game.DescArtigo;
+            var quantidade = 1;
+            var preco = $scope.game.PVP1;
+            var desconto = $scope.game.Desconto;
+            
+            if(cartArray)
+            {
+                for(var i = 0; i < cartArray.length; i++)//for all items
+                {
+                    if(cartArray[i]["id"] === artigoId)
+                        cartArray[i]["quantity"] = parseInt(cartArray[i]["quantity"]) +1;
+                }
+            }
+            else
+            {
+                var cartArray = new Array();
+                var game = {id: artigoId, name: nome, quantity: quantidade, price: preco, discount: desconto };
+                cartArray.push(game);
+            }
+            $cookies.putObject("games", cartArray);
+        }
+
+/*
     $scope.addCart =function () {
         
+        var id = $routeParams.artigoId;
+        var name = $scope.game.DescArtigo;
+        var quantity = 1;
+        var price = $scope.game.PVP1;
+
+        var infoArray = id+";"+name+";"+quantity+";"+price;
+        console.log("infoArray: " + infoArray);
+
+
         var cartArray = $cookies.get("cart");
-        if(cartArray.length > 0){
-            var temp = cartArray;
-            cartArray = [temp, $routeParams.artigoId];
+
+        //verify if there's already items stored
+        if(cartArray)
+        {
+            var add = 1;//assuming no repeated item
+            var cartArray = $cookies.get("cart").split(",");//splitting currents items into an array
+
+            for(var i = 0; i < cartArray.length; i++)//for all items
+            {
+                var cartInfo = cartArray[i].split(";");//spliting item's information into an array
+                
+                if(cartInfo[0] === id)//if the item matches any existing item
+                {
+                    cartInfo[2] = parseInt(cartInfo[2]) + 1;//increase item quantity
+
+                    cartArray[i] = cartInfo[0]+";"+cartInfo[1]+";"+cartInfo[2]+";"+cartInfo[3];//updating current info
+                    
+                    add = 0;//does not add at the end
+                }
+                console.log("cartInfo: "+cartInfo);
+                console.log("cartArray: " + cartArray);
+            }
+
+            if(add)//if the item is not repeated
+            {   
+                console.log("adding");
+                var temp = cartArray;
+                cartArray = [temp, infoArray];
+            }
         }
-        else
-            cartArray = [$routeParams.artigoId];
+        else //no items stored
+            cartArray = [infoArray];
+
+        //stroing current items
         $cookies.put("cart",cartArray);
 
     }
-
+*/
 }]);
 
 
@@ -70,10 +134,22 @@ storeControllers.controller('CartCtrl', ['$scope', '$http', '$cookies', function
     //var s = $routeParams.clientId;
 
 
-    console.log($cookies.get("cart"));
 
-    $scope.games = $cookies.get("cart").split(",");
+    //$scope.games = $cookies.get("cart").split(",");
 
+    var games = $cookies.getObject("games");
+/*    var games = new Array();
+    for(var i = 0; i < gamesUnparsed.length;i++)
+    {
+        games[i]['id'] = gamesUnparsed[i][0];
+        games[i]['name'] = gamesUnparsed[i][1];
+        games[i]['quantity'] = gamesUnparsed[i][2];
+        games[i]['price'] = gamesUnparsed[i][3];
+    }
+*/
+    $scope.games = games;
+
+    console.log("game: "+$scope.games);
 
 }]);
 

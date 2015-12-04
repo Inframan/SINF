@@ -9,11 +9,11 @@
           <li ng-repeat="game in games track by $index" class="col-md-4">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                <h2>{{game}}</h2>
-                <!--    <h6>{{game.PVP1}}€ </h6>
-                    <p>{{game.Desconto > 0 ? "Desconto de " + game.Desconto + "%"  : ""}}</p>
-                    <p> Plataforma: {{game.Plataforma}}</p>
-                    -->
+                <h2>{{game.name}}</h2>
+
+                   <h6>{{game.price}}€ </h6>
+                   <h6> Quantity: {{game.quantity}} </h6>
+                   <dt>{{game.discount > 0 ? "Desconto de " + game.discount + "%"  : ""}}</dt>
                 </div>
                 <div class="panel-body">
                    <img class="img-thumbnail" src="images/BMW-320d.jpg">
