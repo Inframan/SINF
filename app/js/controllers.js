@@ -149,7 +149,17 @@ storeControllers.controller('CartCtrl', ['$scope', '$http', '$cookies', function
 */
     $scope.games = games;
 
-    console.log("game: "+$scope.games);
+    $scope.payment = function payment()
+    {
+        window.location = "#/payment";
+    }
+
+}]);
+
+storeControllers.controller('PayCtrl', ['$scope', '$http', '$cookies', function ($scope,$http,$cookies){
+
+    var games = $cookies.getObject("games");
+    
 
 }]);
 

@@ -28,6 +28,9 @@ gameApp.config(['$routeProvider',
       when('/cart/', {
         templateUrl: 'partials/cart.html',
         controller: 'CartCtrl'
+      }).when('/payment/', {
+        templateUrl: 'partials/payment.html',
+        controller: 'PayCtrl'
       }).
       otherwise({
         redirectTo: '/home'
