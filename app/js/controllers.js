@@ -37,7 +37,7 @@ storeControllers.controller('GameCtrl', ['$scope', '$http', '$routeParams', '$co
             var nome = $scope.game.DescArtigo;
             var quantidade = 1;
             var preco = $scope.game.PVP1;
-            var desconto = $scope.game.Desconto;
+            var discount = $scope.game.Desconto;
             
             if(cartArray)
             {
@@ -50,7 +50,7 @@ storeControllers.controller('GameCtrl', ['$scope', '$http', '$routeParams', '$co
             else
             {
                 var cartArray = new Array();
-                var game = {id: artigoId, name: nome, quantity: quantidade, price: preco, discount: desconto };
+                var game = {artigoId: artigoId, DescArtigo: nome, quantity: quantidade, PVP1: preco, Desconto: discount };
                 cartArray.push(game);
             }
             $cookies.putObject("games", cartArray);
