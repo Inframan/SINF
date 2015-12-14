@@ -47,6 +47,32 @@ namespace FirstREST.Controllers
             }*/
         }
 
+
+        // GET api/ 
+        /// <summary>
+        /// Webservice Encomenda Cliente.
+        /// Devolve o estado de todas as encomendas
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Lib_Primavera.Model.DocVenda> Get()
+        {
+            return Lib_Primavera.PriIntegration.Encomenda_Get();
+        }
+
+            /*Lib_Primavera.Model.DocVenda docvenda = Lib_Primavera.PriIntegration.Encomenda_Get(id);
+            if (docvenda == null)
+            {
+                throw new HttpResponseException(
+                        Request.CreateResponse(HttpStatusCode.NotFound));
+
+            }
+            else
+            {
+                return docvenda;
+            }*/
+        
+
         // GET api/cliente/5    
         /// <summary>
         /// Webservice Cria Encomenda.
