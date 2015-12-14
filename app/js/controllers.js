@@ -112,12 +112,13 @@ storeControllers.controller('GameCtrl', ['$scope', '$http', '$routeParams', '$co
 
 
 
-storeControllers.controller('OrderCtrl', ['$scope', '$http', '$routeParams', function ($scope,$http,$routeParams){
+storeControllers.controller('OrderCtrl', ['$scope', '$http', '$routeParams', '$cookies', function ($scope,$http,$routeParams,$cookies){
 
-    var s = $routeParams.clientId;
-
+//var s = $routeParams.clientId;
+   // var games = $cookies.getObject("games");
+  
     $http({
-        url: "http://127.0.0.1:49822/api/DocVenda/" + s,  //versão final
+        url: "http://127.0.0.1:49822/api/DocVenda/",  //versão final
         //url: "http://127.0.0.1:49822/api/DocVenda/C0001",//para teste, as encomenas do cliente C0001
         method: "GET",
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

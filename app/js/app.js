@@ -21,7 +21,7 @@ gameApp.config(['$routeProvider',
         templateUrl: 'partials/game.html',
         controller: 'GameCtrl'
       }).
-      when('/orders/:clientId', {
+      when('/orders/', {
         templateUrl: 'partials/orders.html',
         controller: 'OrderCtrl'
       }).      

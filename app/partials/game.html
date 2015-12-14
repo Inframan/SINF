@@ -1,58 +1,69 @@
- <!-- Page Content -->
-    <div class="container">
+<!-- Page Content -->
+<div class="container">
 
-        <!-- Page Heading/Breadcrumbs -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header"><a href="store.html">{{game.DescArtigo}}</a>
-                    <small>{{game.Plataforma}}</small>
-                </h1>                
-            </div>
+    <!-- Page Heading/Breadcrumbs -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"><a href="store.html">{{game.DescArtigo}}</a>
+                <small>{{game.Plataforma}}</small>
+            </h1>                
         </div>
-        <!-- /.row -->
-        <!-- Portfolio Item Row -->
-        <div class="row">
-            <div class="col-md-8 text-left">
-                <div class="panel-body">
-                    <img class="img-thumbnail" src="images/BMW-320d.jpg">
-                </div>
-            </div>
-            <div class="col-md-4 text-left">
-                <h2>Descrição</h2>
-
-                <dl>
-                   <dt>Preço: </dt><dd>{{game.PVP1}}€</dd>
-                   <dt>{{game.Desconto > 0 ? "Desconto de " + game.Desconto + "%"  : ""}}</dt>
-                   <dt>Co-op:</dt><dd> {{game.Coop ? "Com modo cooperativo"  : "Sem modo cooperativo"}}</dd>
-                   <dt>Data de Lançamento:</dt><dd> {{game.Data}} </dd>
-                   <dt>Developer:</dt><dd> {{game.Developer}} </dd>
-                    <dt>Generos: </dt> <dd ng-repeat="genero in game.Genero">{{genero}}</dd>                  
-                
-                    <dt>Idiomas:</dt> <dd ng-repeat="idioma in game.Idioma">{{idioma}}</dd>                  
-                    
-
-                    </dd>
-                    <dt>Publisher:</dt><dd>{{game.Publisher}} </dd>
-                </dl>
-                 <br>
-            </div>
-            
-            <div class="col-md-8 text-left">
-                  
-                <br></br>
-                <h3>Resumo</h3>
-                <p>{{game.Resumo ? game.Resumo: "Lorem ipsum dolor sit amet, dico zril disputationi an per, eius sonet clita cum eu. Mea fugit melius no. Cum consul facilis an. Alienum voluptua sea an, pri ut brute epicuri, posse dicat paulo no est. Ne per dictas lobortis, eligendi laboramus delicatissimi ex vel.
-
-No vim nihil fabulas. Quo facilis tibique mandamus id. Fugit populo pro ei. Ea meis iuvaret vim, ei eligendi molestie eum, cu adhuc salutatus repudiandae quo.
-
-Quis alterum equidem vis ea, ei dicam utinam conclusionemque ius. Mucius delicata has cu, dictas offendit iudicabit vim ei. Case probo signiferumque eum et. Eam nusquam nostrum disputando an."}}</p>
-              
-            </div>
-                <div class="col-md-4">
-              <div class="panel-body">
-                    <button ng-ref="here" class="btn btn-lg btn-block btn-info" ng-click="addCart()" >Adicionar ao Carrinho</button>
-                </div>
-                </div>
-        </div>
-        <hr>
     </div>
+    <!-- /.row -->
+    <!-- Portfolio Item Row -->
+    <div class="row">
+            <div class="col-md-8">
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="panel-body">
+                                <img class="img-thumbnail" src="/app/img/thumb_{{game.CodArtigo}}.jpg">
+                            </div>
+                    </div>
+                    <div class="col-md-12 text-left">
+                            <br></br>
+                            <h3>Resumo</h3>
+                            <p>{{game.Resumo ? game.Resumo: "Lorem ipsum dolor sit amet, dico zril disputationi an per, eius sonet clita cum eu. Mea fugit melius no. Cum consul facilis an. Alienum voluptua sea an, pri ut brute epicuri, posse dicat paulo no est. Ne per dictas lobortis, eligendi laboramus delicatissimi ex vel.
+
+                            No vim nihil fabulas. Quo facilis tibique mandamus id. Fugit populo pro ei. Ea meis iuvaret vim, ei eligendi molestie eum, cu adhuc salutatus repudiandae quo.
+
+                            Quis alterum equidem vis ea, ei dicam utinam conclusionemque ius. Mucius delicata has cu, dictas offendit iudicabit vim ei. Case probo signiferumque eum et. Eam nusquam nostrum disputando an."}}</p>        
+                </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-12 text-left">
+                            <h2>Descrição</h2>
+                        
+                            <dl>
+                               <dt><h3>Preço: </h3></dt><dd>{{game.PVP1}}€</dd>
+                               <dt>{{game.Desconto > 0 ? "Desconto de " + game.Desconto + "%"  : ""}}</dt>
+                               <dt><h3>Co-op:</h3></dt><dd> {{game.Coop ? "Com modo cooperativo"  : "Sem modo cooperativo"}}</dd>
+                               <dt><h3>Data de Lançamento:</h3></dt><dd> {{game.Data}} </dd>
+                               <dt><h3>Developer:</h3></dt><dd> {{game.Developer}} </dd>
+                                <dt><h3>Generos: </h3></dt> <dd ng-repeat="genero in game.Genero">{{genero}}</dd>                  
+                            
+                                <dt><h3>Idiomas: </h3></dt> <dd ng-repeat="idioma in game.Idioma">{{idioma}}</dd>                  
+                                
+
+                                </dd>
+                                <dt><h3>Publisher:</h3></dt><dd>{{game.Publisher}} </dd>
+                            </dl>
+                             <br>
+                        </div>
+            </div>
+
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+            <div class="panel-body">
+                    <button ng-ref="here" class="btn btn-lg btn-block btn-info" ng-click="addCart()">
+                    <i class="fa fa-cart-plus fa-lg"></i> Adicionar ao Carrinho
+                    </button>
+            </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+    <hr>
+</div>
