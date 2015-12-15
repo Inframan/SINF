@@ -33,6 +33,9 @@ storeControllers.controller('GameCtrl', ['$scope', '$http', '$routeParams', '$co
 
             var cartArray = $cookies.getObject("games");
 
+
+            
+
             var artigoId = $routeParams.artigoId;
             var nome = $scope.game.DescArtigo;
             var quantidade = 1;
@@ -43,7 +46,7 @@ storeControllers.controller('GameCtrl', ['$scope', '$http', '$routeParams', '$co
             {
                 for(var i = 0; i < cartArray.length; i++)//for all items
                 {
-                    if(cartArray[i]["id"] === artigoId)
+                    if(cartArray[i]["artigoId"] === artigoId)
                         cartArray[i]["quantity"] = parseInt(cartArray[i]["quantity"]) +1;
                 }
             }
