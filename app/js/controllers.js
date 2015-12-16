@@ -160,10 +160,48 @@ storeControllers.controller('CartCtrl', ['$scope', '$http', '$cookies', function
 
 }]);
 
-storeControllers.controller('PayCtrl', ['$scope', '$http', '$cookies', function ($scope,$http,$cookies){
+storeControllers.controller('PayCtrl', ['$scope', '$http',  '$routeParams', '$cookies', function ($scope,$http,$routeParams,$cookies){
 
     var games = $cookies.getObject("games");
     
+    $scope.creditPayment = function creditPayment()
+    {
+        //window.location = "#/payment";
+
+        var games = $cookies.getObject("games");   
+
+
+
+        var linhaDoc = new Array();
+        var game;
+        angular.forEach(games, function(game)
+        {
+            linhaDoc.push({'CodArtigo' : game.artigoId, 'Quantidade' : game.quantity});
+        });
+
+
+        $http({
+        url: "http://127.0.0.1:49822/api/DocVenda/", 
+        method: "POST",
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        data: {
+            "Entidade": "C0001",
+            "LinhasDoc": linhaDoc,
+            "ModoPag": "MB",
+            "ModoExp": "01",
+            "DadosPag": "Dados do cartao"
+        }
+      }).success(function(response) {
+        $scope.orders = response;
+    }).error(function(response)
+    {
+        console.log("sad");
+    }
+    );
+
+    }
+
+
 
 }]);
 
