@@ -188,7 +188,6 @@ storeControllers.controller('PayCtrl', ['$scope', '$http',  '$routeParams', '$co
             linhaDoc.push({"CodArtigo": game.artigoId, "Quantidade": game.quantity});
         });
 
-
         $http({
         url: "http://127.0.0.1:49822/api/DocVenda/", 
         method: "POST",
@@ -201,6 +200,9 @@ storeControllers.controller('PayCtrl', ['$scope', '$http',  '$routeParams', '$co
         }
       }).success(function(response) {
         $scope.orders = response;
+        var resetCart = new Array();
+        $cookies.putObject("games", resetCart); 
+        window.location = "#/home";
     }).error(function(response)
     {
         console.log("sad");
