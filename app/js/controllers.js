@@ -179,7 +179,7 @@ storeControllers.controller('PayCtrl', ['$scope', '$http',  '$routeParams', '$co
 
         var games = $cookies.getObject("games");   
 
-
+        var codCli = angular.element('#clientCode').val();
 
         var linhaDoc = new Array();
         var game;
@@ -192,7 +192,7 @@ storeControllers.controller('PayCtrl', ['$scope', '$http',  '$routeParams', '$co
         url: "http://127.0.0.1:49822/api/DocVenda/", 
         method: "POST",
         data: {
-            "Entidade": "C0001",
+            "Entidade": codCli,
             "LinhasDoc": linhaDoc,
             "ModoPag": "MB",
             "ModoExp": "01",

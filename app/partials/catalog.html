@@ -2,11 +2,24 @@
 
   <div class="row" >
 
+      <div class?="col-md-12">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="col-md-11">
+            <input type="text" class="form-control" placeholder="Search" ng-model="search.$">
+          </div>
+          <div class="col-md-1">
+           <i class="fa fa-search"></i>
+           </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+
         <!-- Wrapper for slides -->
      <div class="col-md-12 text-center">
       <!--Body content-->
        <ul class="list-unstyled">
-          <li ng-repeat="game in games | filter:query | orderBy:orderProp" class="col-md-4">
+          <li ng-repeat="game in games | filter:search | orderBy:orderProp" class="col-md-4">
               <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4> <a href="#">{{game.DescArtigo}}</a></h4>
