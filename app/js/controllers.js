@@ -198,8 +198,8 @@ storeControllers.controller('PayCtrl', ['$scope', '$http',  '$routeParams', '$co
             "ModoExp": "01",
             "DadosPag": "Dados do cartao"
         }
-      }).success(function(response) {
-        $scope.orders = response;
+      }).success(function(data) {
+        $scope.orders = data;
         var resetCart = new Array();
         $cookies.putObject("games", resetCart); 
         window.location = "#/home";
