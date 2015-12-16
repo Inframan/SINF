@@ -41,13 +41,22 @@ storeControllers.controller('GameCtrl', ['$scope', '$http', '$routeParams', '$co
             var quantidade = 1;
             var preco = $scope.game.PVP1;
             var discount = $scope.game.Desconto;
+            var toAdd = 1;
             
             if(cartArray)
             {
                 for(var i = 0; i < cartArray.length; i++)//for all items
                 {
                     if(cartArray[i]["artigoId"] === artigoId)
+                    {
                         cartArray[i]["quantity"] = parseInt(cartArray[i]["quantity"]) +1;
+                        toAdd = 0;
+                    }
+                }
+                if(toAdd)
+                {
+                    var game = {artigoId: artigoId, DescArtigo: nome, quantity: quantidade, PVP1: preco, Desconto: discount };
+                    cartArray.push(game);
                 }
             }
             else
@@ -176,14 +185,13 @@ storeControllers.controller('PayCtrl', ['$scope', '$http',  '$routeParams', '$co
         var game;
         angular.forEach(games, function(game)
         {
-            linhaDoc.push({'CodArtigo' : game.artigoId, 'Quantidade' : game.quantity});
+            linhaDoc.push({"CodArtigo": game.artigoId, "Quantidade": game.quantity});
         });
 
 
         $http({
         url: "http://127.0.0.1:49822/api/DocVenda/", 
         method: "POST",
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         data: {
             "Entidade": "C0001",
             "LinhasDoc": linhaDoc,
